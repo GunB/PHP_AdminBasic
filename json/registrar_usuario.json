@@ -1,4 +1,8 @@
 {
+    "action":{
+        "site" : "",
+        "value" : ""
+    },
     "titulo": {
         "type": "title",
         "label": "Registrate",
