@@ -1,0 +1,45 @@
+{
+    "titulo": {
+        "type": "title",
+        "label": "Registrate",
+        "placeholder": null,
+        "value": 3
+    },
+    "nombre": {
+        "type": "text",
+        "label": "Nombre",
+        "placeholder": null,
+        "value": null
+    },
+    "apellido": {
+        "type": "text",
+        "label": "Apellido",
+        "placeholder": null,
+        "value": null
+    },
+    "correo": {
+        "type": "text",
+        "label": "Correo Electrónico",
+        "placeholder": null,
+        "value": null
+    },
+    "clave": {
+        "type": "password",
+        "label": "Contraseña",
+        "placeholder": null,
+        "value": null
+    },
+    "contrasena2": {
+        "type": "password",
+        "label": "Confirmar contraseña",
+        "placeholder": null,
+        "equalTo": "clave",
+        "value": null
+    },
+    "informacion1": {
+        "type": "info",
+        "label": null,
+        "placeholder": null,
+        "value": "Por favor, ten cuidado al escribir tu correo electrónico, ya que será el canal de comunicación contigo para cualquier actividad comercial dentro de la plataforma."
+    }
+}

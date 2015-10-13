@@ -1,0 +1,20 @@
+{
+    "titulo": {
+        "type": "title",
+        "label": "Iniciar sesión",
+        "placeholder": null,
+        "value": 3
+    },
+    "correo": {
+        "type": "text",
+        "label": "Correo Electrónico",
+        "placeholder": null,
+        "value": null
+    },
+    "contrasena1": {
+        "type": "password",
+        "label": "Contraseña",
+        "placeholder": null,
+        "value": null
+    }
+}
