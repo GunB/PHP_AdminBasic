@@ -17,7 +17,7 @@
  *
  * NOTE: If you change these, also change the error_reporting() code below
  */
-define('ENVIRONMENT', isset($_SERVER['DATA']) ? $_SERVER['DATA'] : 'production');
+define('ENVIRONMENT', isset($_SERVER['DATA']) ? $_SERVER['DATA'] : 'development');
 /*
  * ---------------------------------------------------------------
  * ERROR REPORTING
@@ -70,7 +70,7 @@ foreach ($files1 as $key => $value) {
         require_once $include_path;
     }
 }
-$model_path = "bin";
+$model_path = "model";
 $files1 = (scandir($app_path . "/" . $model_path));
 foreach ($files1 as $key => $value) {
     if (endsWith($value, ".php")) {
@@ -83,6 +83,14 @@ $files1 = (scandir($app_path . "/" . $controller_path));
 foreach ($files1 as $key => $value) {
     if (endsWith($value, ".php")) {
         $include_path = $app_path . "/" . $controller_path . "/" . $value;
+        require_once $include_path;
+    }
+}
+$view_path = "view";
+$files1 = (scandir($app_path . "/" . $view_path));
+foreach ($files1 as $key => $value) {
+    if (endsWith($value, ".php")) {
+        $include_path = $app_path . "/" . $view_path . "/" . $value;
         require_once $include_path;
     }
 }
