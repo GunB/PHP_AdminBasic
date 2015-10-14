@@ -135,6 +135,7 @@ if ((!$_SERVER["CROSSDOMAINCHECK"]) && ENVIRONMENT != 'development') {
 }
 
 // Invalid characters
+/*
 function invalid_fixing($data) {
     foreach ($data as $key => $value) {
         if (is_array($value) || is_object($value)) {
@@ -146,9 +147,10 @@ function invalid_fixing($data) {
     array_filter($data);
     return $data;
 }
-
-$_GET = invalid_fixing($_GET);
+$_GET = invalid_fixing(filter_input_array(INPUT_SERVER));
 $_POST = invalid_fixing($_POST);
+//*/
+
 /*
  * ---------------------------------------------------------------
  * SYSTEM FUNCTION
