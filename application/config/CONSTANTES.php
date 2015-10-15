@@ -25,6 +25,7 @@ $base_page = "init.php";
 
 define("BASE_URL", $base_url . $base_page);
 define("BASE", $base_url . $base_page);
+define("START_PAGE", "inicio");
 // functions
 
 //Tables

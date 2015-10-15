@@ -119,13 +119,15 @@ if (!IS_AJAX) {
 
 function error($data) {
     header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
-    echo 'The application environment is not set correctly.';
+    //echo 'The application environment is not set correctly.';
     header('Content-Type: application/json; charset=UTF-8');
     //var_dump($_SERVER);
     $error_arr = array('message' => 'ERROR', 'code' => 1444);
     if (ENVIRONMENT === 'development') {
-        $error_arr = array_merge($error_arr, ['file' => $data['file'], 'line' => $data['line']], $_GET, $_POST, $_SERVER);
+        $error_arr = array_merge($error_arr, $data, ["GET" => filter_input_array(INPUT_GET)], ["POST" => filter_input_array(INPUT_POST)], ["SERVER" => filter_input_array(INPUT_SERVER)]);
     }
+    //var_dump($error_arr);
+    //exit(0);
     die(json_encode($error_arr));
 }
 
@@ -136,20 +138,20 @@ if ((!$_SERVER["CROSSDOMAINCHECK"]) && ENVIRONMENT != 'development') {
 
 // Invalid characters
 /*
-function invalid_fixing($data) {
-    foreach ($data as $key => $value) {
-        if (is_array($value) || is_object($value)) {
-            $data[$key] = invalid_fixing($value);
-        } else {
-            $data[$key] = htmlspecialchars($value);
-        }
-    }
-    array_filter($data);
-    return $data;
-}
-$_GET = invalid_fixing(filter_input_array(INPUT_SERVER));
-$_POST = invalid_fixing($_POST);
-//*/
+  function invalid_fixing($data) {
+  foreach ($data as $key => $value) {
+  if (is_array($value) || is_object($value)) {
+  $data[$key] = invalid_fixing($value);
+  } else {
+  $data[$key] = htmlspecialchars($value);
+  }
+  }
+  array_filter($data);
+  return $data;
+  }
+  $_GET = invalid_fixing(filter_input_array(INPUT_SERVER));
+  $_POST = invalid_fixing($_POST);
+  // */
 
 /*
  * ---------------------------------------------------------------
@@ -169,31 +171,42 @@ foreach ($uri as $key => $value) {
     $uri[$key] = $value;
 }
 $_SERVER["URI"] = $uri;
-switch (sizeof($uri)) {
-    case 0:
-        $caller = ['file' => 'init', 'line' => 171];
-        error($caller);
-        exit(0);
-        break;
-    case 1:
-        try {
-            $refClass = new ReflectionClass("$uri[0]");
-            $class_instance = $refClass->newInstanceArgs((array) null);
-        } catch (Exception $e) {
-            $caller = ['file' => 'init', 'line' => 182];
-            error($caller);
+
+// <editor-fold defaultstate="collapsed" desc="Start Site">
+function startSite($uri) {
+    switch (sizeof($uri)) {
+        case 0:
+            $uri[0] = START_PAGE;
+            startSite($uri);
+            //$caller = ['file' => 'init', 'line' => 171];
+            //error($caller);
             exit(0);
-        }
-        break;
-    default :
-        try {
-            $refClass = new ReflectionClass("$uri[0]");
-            $class_instance = $refClass->newInstanceArgs((array) null);
-            $class_instance->$uri[1]();
-        } catch (Exception $e) {
-            $caller = ['file' => 'init', 'line' => 194];
-            error($caller);
-            exit(0);
-        }
-        break;
+            break;
+        case 1:
+            try {
+                $refClass = new ReflectionClass(ucfirst("$uri[0]"));
+                $class_instance = $refClass->newInstanceArgs((array) null);
+                //$uri[1] = "index";
+                //$class_instance->$uri[1]();
+            } catch (Exception $e) {
+                $caller = ['file' => 'init', 'line' => 183, "uri" => $uri, "error_mess" => $e];
+                error($caller);
+                exit(0);
+            }
+            break;
+        default :
+            try {
+                $refClass = new ReflectionClass("$uri[0]");
+                $class_instance = $refClass->newInstanceArgs((array) null);
+                $class_instance->$uri[1]();
+            } catch (Exception $e) {
+                $caller = ['file' => 'init', 'line' => 194, "uri" => $uri, "error_mess" => $e];
+                error($caller);
+                exit(0);
+            }
+            break;
+    }
 }
+// </editor-fold>
+
+startSite($uri);

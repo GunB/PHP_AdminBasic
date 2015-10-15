@@ -25,42 +25,6 @@ class C_Forming {
         return $arr;
     }
 
-    function getAllPost() {
-        $post = array();
-        foreach (filter_input_array(INPUT_POST) as $key) {
-            $data = filter_input(INPUT_POST, $key, FILTER_SANITIZE_SPECIAL_CHARS);
-            if (!empty($data) or $data == 0) {
-                $post[$key] = (($data));
-            }
-        }
-        $post = (object) $post;
-        return $post;
-    }
-
-    function getAllGet() {
-        $post = array();
-        foreach (filter_input_array(INPUT_GET) as $key) {
-            $data = filter_input(INPUT_GET, $key, FILTER_SANITIZE_SPECIAL_CHARS);
-            if (!empty($data) or $data == 0) {
-                $post[$key] = (($data));
-            }
-        }
-        $post = (object) $post;
-        return $post;
-    }
-
-    function getAllServer() {
-        $post = array();
-        foreach (filter_input_array(INPUT_SERVER) as $key) {
-            $data = filter_input(INPUT_SERVER, $key, FILTER_SANITIZE_SPECIAL_CHARS);
-            if (!empty($data) or $data == 0) {
-                $post[$key] = (($data));
-            }
-        }
-        $post = (object) $post;
-        return $post;
-    }
-
     function crearInput($nombre_tabla, $data, $is_detalle_json = false) {
         $fields = $this->db->list_fields($nombre_tabla);
         $input = array();
@@ -87,16 +51,6 @@ class C_Forming {
 
         $input = (object) $input;
         return $input;
-    }
-
-    function readFile($string_rute, $isAbsolutePath = false) {
-        $resp = null;
-        if ($isAbsolutePath) {
-            $resp = file_get_contents($string_rute);
-        } else {
-            $resp = file_get_contents(base_url() . $string_rute);
-        }
-        return $resp;
     }
 
     /**
