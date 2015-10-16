@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-namespace application\controller;
+//namespace application\model_view;
 
 class Inicio {
 

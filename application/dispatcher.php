@@ -86,6 +86,14 @@ foreach ($files1 as $key => $value) {
         require_once $include_path;
     }
 }
+$modelview_path = "model_view";
+$files1 = (scandir($app_path . "/" . $modelview_path));
+foreach ($files1 as $key => $value) {
+    if (endsWith($value, ".php")) {
+        $include_path = $app_path . "/" . $modelview_path . "/" . $value;
+        require_once $include_path;
+    }
+}
 $view_path = "view";
 $files1 = (scandir($app_path . "/" . $view_path));
 foreach ($files1 as $key => $value) {
@@ -172,12 +180,15 @@ foreach ($uri as $key => $value) {
 }
 $_SERVER["URI"] = $uri;
 
+//use application\model_view;
+
 // <editor-fold defaultstate="collapsed" desc="Start Site">
-function startSite($uri) {
+function startSite($uri, $modelview_path) {
+    
     switch (sizeof($uri)) {
         case 0:
             $uri[0] = START_PAGE;
-            startSite($uri);
+            startSite($uri, $modelview_path);
             //$caller = ['file' => 'init', 'line' => 171];
             //error($caller);
             exit(0);
@@ -209,4 +220,4 @@ function startSite($uri) {
 }
 // </editor-fold>
 
-startSite($uri);
+startSite($uri, $modelview_path);
