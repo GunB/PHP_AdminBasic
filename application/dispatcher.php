@@ -197,8 +197,8 @@ function startSite($uri, $modelview_path) {
             try {
                 $refClass = new ReflectionClass(ucfirst("$uri[0]"));
                 $class_instance = $refClass->newInstanceArgs((array) null);
-                //$uri[1] = "index";
-                //$class_instance->$uri[1]();
+                $uri[1] = "index";
+                $class_instance->$uri[1]();
             } catch (Exception $e) {
                 $caller = ['file' => 'init', 'line' => 183, "uri" => $uri, "error_mess" => $e];
                 error($caller);
