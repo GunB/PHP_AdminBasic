@@ -1,5 +1,4 @@
 <?php
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -15,9 +14,11 @@ class Inicio {
     function __construct() {
         
     }
-    
-    function index(){
-        
+
+    function index() {
+        showHeaders();
+        showMenu();
+        showFoot();
     }
 
 }

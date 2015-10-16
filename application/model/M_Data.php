@@ -51,7 +51,7 @@ class M_Data {
         $post = (object) $post;
         return $post;
     }
-    
+
     function readFile($string_rute, $isAbsolutePath = false) {
         $resp = null;
         if ($isAbsolutePath) {
@@ -60,6 +60,26 @@ class M_Data {
             $resp = file_get_contents(base_url() . $string_rute);
         }
         return $resp;
+    }
+
+    public function listFolderFiles($dir) {
+        $arrfiles = array();
+        $ffs = scandir($dir);
+        //echo '<ol>';
+        foreach ($ffs as $ff) {
+            if ($ff != '.' && $ff != '..') {
+                //echo '<br>' . $ff;
+                if (is_dir($dir . '/' . $ff)) {
+                    $data = $this->listFolderFiles($dir . '/' . $ff);
+                    $arrfiles = array_merge($arrfiles, $data);
+                } else {
+                    array_push($arrfiles, $dir . '/' . $ff);
+                }
+                //echo '</li>';
+            }
+        }
+        //echo '</ol>';
+        return $arrfiles;
     }
 
 }
