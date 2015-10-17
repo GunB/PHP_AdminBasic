@@ -10,14 +10,23 @@
 class Inicio {
 
     //var $sesion = null;
+    var $M_DATA;
+    var $C_FORMING;
 
     function __construct() {
-        
+        $this->M_DATA = new \application\model\M_Data();
+        $this->C_FORMING = new \application\controller\C_Forming();
     }
 
     function index() {
         showHeaders();
         showMenu();
+        
+        $form = $this->M_DATA->readFile("json/iniciar_sesion.json");
+        $form = $this->C_FORMING->creaForm($form);
+        
+        showForm($form);
+        
         showFoot();
     }
 
