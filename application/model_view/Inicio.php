@@ -1,4 +1,5 @@
 <?php
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -21,12 +22,13 @@ class Inicio {
     function index() {
         showHeaders();
         showMenu();
-        
-        $form = $this->M_DATA->readFile("json/iniciar_sesion.json");
-        $form = $this->C_FORMING->creaForm($form);
-        
-        showForm($form);
-        
+
+        /* $form = $this->M_DATA->readFile("json/iniciar_sesion.json");
+          $form = $this->C_FORMING->creaForm($form);
+
+          showForm($form); */
+        showProductos1();
+
         showFoot();
     }
 
