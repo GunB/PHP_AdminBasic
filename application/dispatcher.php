@@ -62,46 +62,20 @@ function endsWith($haystack, $needle) {
 }
 
 $app_path = "application";
-$system_path = 'config';
-$files1 = (scandir($app_path . "/" . $system_path));
-foreach ($files1 as $key => $value) {
-    if (endsWith($value, ".php")) {
-        $include_path = $app_path . "/" . $system_path . "/" . $value;
-        require_once $include_path;
+
+$arr_paths = ["config", "controller", "model", "view", "model_view"];
+
+foreach ($arr_paths as $val) {
+    $system_path = $val;
+    $files1 = (scandir($app_path . "/" . $system_path));
+    foreach ($files1 as $key => $value) {
+        if (endsWith($value, ".php")) {
+            $include_path = $app_path . "/" . $system_path . "/" . $value;
+            require_once $include_path;
+        }
     }
 }
-$model_path = "model";
-$files1 = (scandir($app_path . "/" . $model_path));
-foreach ($files1 as $key => $value) {
-    if (endsWith($value, ".php")) {
-        $include_path = $app_path . "/" . $model_path . "/" . $value;
-        require_once $include_path;
-    }
-}
-$controller_path = "controller";
-$files1 = (scandir($app_path . "/" . $controller_path));
-foreach ($files1 as $key => $value) {
-    if (endsWith($value, ".php")) {
-        $include_path = $app_path . "/" . $controller_path . "/" . $value;
-        require_once $include_path;
-    }
-}
-$modelview_path = "model_view";
-$files1 = (scandir($app_path . "/" . $modelview_path));
-foreach ($files1 as $key => $value) {
-    if (endsWith($value, ".php")) {
-        $include_path = $app_path . "/" . $modelview_path . "/" . $value;
-        require_once $include_path;
-    }
-}
-$view_path = "view";
-$files1 = (scandir($app_path . "/" . $view_path));
-foreach ($files1 as $key => $value) {
-    if (endsWith($value, ".php")) {
-        $include_path = $app_path . "/" . $view_path . "/" . $value;
-        require_once $include_path;
-    }
-}
+
 /*
  * ---------------------------------------------------------------
  * SYSTEM PROTECTION
@@ -181,10 +155,9 @@ foreach ($uri as $key => $value) {
 $_SERVER["URI"] = $uri;
 
 //use application\model_view;
-
 // <editor-fold defaultstate="collapsed" desc="Start Site">
 function startSite($uri, $modelview_path) {
-    
+
     switch (sizeof($uri)) {
         case 0:
             $uri[0] = START_PAGE;
@@ -218,6 +191,7 @@ function startSite($uri, $modelview_path) {
             break;
     }
 }
+
 // </editor-fold>
 
-startSite($uri, $modelview_path);
+startSite($uri, $arr_paths[sizeof($arr_paths) - 1]);

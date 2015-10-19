@@ -11,15 +11,17 @@ function showHeaders() {
         <head>
             <?php
             $m_data = new application\model\M_Data();
-            $array = $m_data->listFolderFiles("assets");
+            //$array = $m_data->listFolderFiles("assets");
+            $array = $m_data->directoryToArray("assets", true);
+
             foreach ($array as $key => $value) {
                 if (endsWith($value, ".js")) {
                     ?>
-                    <script src="<?php echo $value ?>"></script>
+                    <script src="<?php echo base_url($value) ?>"></script>
                     <?php
                 } elseif (endsWith($value, ".css")) {
                     ?>
-                    <link href="<?php echo $value ?>" rel="stylesheet">
+                    <link href="<?php echo base_url($value)  ?>" rel="stylesheet">
                     <?php
                 }
             }

@@ -1,13 +1,9 @@
 {
-    "action":{
-        "site" : "",
-        "value" : ""
-    },
     "titulo": {
         "type": "title",
         "label": "Registrate",
         "placeholder": null,
-        "value": 3
+        "value": 2
     },
     "nombre": {
         "type": "text",
@@ -45,5 +41,11 @@
         "label": null,
         "placeholder": null,
         "value": "Por favor, ten cuidado al escribir tu correo electrónico, ya que será el canal de comunicación contigo para cualquier actividad comercial dentro de la plataforma."
+    },
+    "button" :{
+        "type" : "button",
+        "site" : "relative",
+        "value" : "C_Usuario/registro",
+        "label" : "Enviar"
     }
 }

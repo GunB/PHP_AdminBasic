@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-namespace application\controller;
+//namespace application\controller;
 
 class C_Forming {
 
@@ -132,6 +132,21 @@ class C_Forming {
                         //var_dump($value);
                         break;
                     case "button":
+                        $direc = "";
+                        if ($value['site'] == "relative") {
+                            $direc = site_url($value['value']);
+                        } elseif ($value['site'] == "absolute") {
+                            $direc = $value['value'];
+                        }
+                        $resp['extra2'] .= '$("#' . $id_unico . ' .' . $key . '").on("click",'
+                                . 'function(event){  '
+                                . 'event.preventDefault();'
+                                . '$("#' . $id_unico . '").parents("form:eq(0)").attr("action","' . $direc . '");'
+                                . '$("#' . $id_unico . '").parents("form:eq(0)").submit();'
+                                . '  });' . "\n";
+                        array_push($resp, '<button href="' . $direc . '" class="btn ' . @$value['class'] . ' ' . $key . '" >' . @$value['label'] . '</button>');
+                        break;
+                    case "submit":
                         $direc = "";
                         if ($value['site'] == "relative") {
                             $direc = site_url($value['value']);

@@ -21,15 +21,18 @@ define('IS_AJAX', isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVE
 $base_url = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") ? "https" : "http");
 $base_url .= "://" . $_SERVER['HTTP_HOST'];
 $base_url .= str_replace(basename($_SERVER['SCRIPT_NAME']), "", $_SERVER['SCRIPT_NAME']);
-$base_page = "init.php";
+$base_page = "index.php";
 
 define("BASE_URL", $base_url);
 define("BASE", $base_url . $base_page);
 define("START_PAGE", "inicio");
 // functions
 
-function base_url(){
-    return BASE_URL;
+function base_url($strUrl = ""){
+    return BASE_URL.$strUrl;
+}
+function site_url($strUrl = ""){
+    return BASE."/".$strUrl;
 }
 
 //Tables

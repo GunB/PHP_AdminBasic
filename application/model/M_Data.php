@@ -52,34 +52,62 @@ class M_Data {
         return $post;
     }
 
+    /**
+     * Leer un archivo
+     * @param string $string_rute     Ruta del archivo a leer
+     * @param bool $isAbsolutePath      Buscar en una ruta especifica, por defecto es relativa
+     * @return sring Retorna el contenido del archivo
+     */
     function readFile($string_rute, $isAbsolutePath = false) {
         $resp = null;
         if ($isAbsolutePath) {
             $resp = file_get_contents($string_rute);
         } else {
-            $resp = file_get_contents(base_url() . $string_rute);
+            $resp = file_get_contents(base_url($string_rute));
         }
+        
+        $resp = mb_convert_encoding($resp, 'HTML-ENTITIES', "UTF-8");
         return $resp;
     }
 
-    public function listFolderFiles($dir) {
-        $arrfiles = array();
-        $ffs = scandir($dir);
-        //echo '<ol>';
-        foreach ($ffs as $ff) {
-            if ($ff != '.' && $ff != '..') {
-                //echo '<br>' . $ff;
-                if (is_dir($dir . '/' . $ff)) {
-                    $data = $this->listFolderFiles($dir . '/' . $ff);
-                    $arrfiles = array_merge($arrfiles, $data);
-                } else {
-                    array_push($arrfiles, $dir . '/' . $ff);
+    /**
+     * Get an array that represents directory tree
+     * @param string $directory     Directory path
+     * @param bool $recursive         Include sub directories
+     * @param bool $listDirs         Include directories on listing
+     * @param bool $listFiles         Include files on listing
+     * @param regex $exclude         Exclude paths that matches this regex
+     */
+    function directoryToArray($directory, $recursive = true, $listDirs = false, $listFiles = true, $exclude = '') {
+        $arrayItems = array();
+        $skipByExclude = false;
+        $handle = opendir($directory);
+        if ($handle) {
+            while (false !== ($file = readdir($handle))) {
+                preg_match("/(^(([\.]){1,2})$|(\.(svn|git|md))|(Thumbs\.db|\.DS_STORE))$/iu", $file, $skip);
+                if ($exclude) {
+                    preg_match($exclude, $file, $skipByExclude);
                 }
-                //echo '</li>';
+                if (!$skip && !$skipByExclude) {
+                    if (is_dir($directory . DIRECTORY_SEPARATOR . $file)) {
+                        if ($recursive) {
+                            $arrayItems = array_merge($arrayItems, $this->directoryToArray($directory . DIRECTORY_SEPARATOR . $file, $recursive, $listDirs, $listFiles, $exclude));
+                        }
+                        if ($listDirs) {
+                            $file = $directory . DIRECTORY_SEPARATOR . $file;
+                            $arrayItems[] = $file;
+                        }
+                    } else {
+                        if ($listFiles) {
+                            $file = $directory . DIRECTORY_SEPARATOR . $file;
+                            $arrayItems[] = $file;
+                        }
+                    }
+                }
             }
+            closedir($handle);
         }
-        //echo '</ol>';
-        return $arrfiles;
+        return $arrayItems;
     }
 
 }

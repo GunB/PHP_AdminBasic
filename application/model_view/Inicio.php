@@ -22,12 +22,19 @@ class Inicio {
     function index() {
         showHeaders();
         showMenu();
-
-        /* $form = $this->M_DATA->readFile("json/iniciar_sesion.json");
-          $form = $this->C_FORMING->creaForm($form);
-
-          showForm($form); */
         showProductos1();
+        showFoot();
+    }
+
+    function registrarse() {
+        showHeaders();
+        showMenu();
+
+        $form = $this->M_DATA->readFile("json/registrar_usuario.json");
+        $form = $this->C_FORMING->creaForm($form);
+
+        showForm($form); //*/
+        //showProductos1();
 
         showFoot();
     }
