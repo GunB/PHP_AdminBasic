@@ -55,7 +55,7 @@ function showMenu() {
                                         </div>
                                         or-->
                                         Login
-                                        <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
+                                        <form class="form" role="form" method="post" action="<?php echo site_url("C_Usuario/iniciar_sesion"); ?>" accept-charset="UTF-8" id="login-nav">
                                             <div class="form-group">
                                                 <label class="sr-only" for="exampleInputEmail2">Email address</label>
                                                 <input name="correo" type="email" class="form-control" id="exampleInputEmail2" placeholder="Email address" required>

@@ -157,7 +157,6 @@ $_SERVER["URI"] = $uri;
 //use application\model_view;
 // <editor-fold defaultstate="collapsed" desc="Start Site">
 function startSite($uri, $modelview_path) {
-
     switch (sizeof($uri)) {
         case 0:
             $uri[0] = START_PAGE;

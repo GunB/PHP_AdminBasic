@@ -18,7 +18,7 @@ class M_Data {
 
     function getAllPost() {
         $post = array();
-        foreach (filter_input_array(INPUT_POST) as $key) {
+        foreach (filter_input_array(INPUT_POST) as $key => $value) {
             $data = filter_input(INPUT_POST, $key, FILTER_SANITIZE_SPECIAL_CHARS);
             if (!empty($data) or $data == 0) {
                 $post[$key] = (($data));

@@ -16,7 +16,7 @@ class Inicio {
 
     function __construct() {
         $this->M_DATA = new \application\model\M_Data();
-        $this->C_FORMING = new \application\controller\C_Forming();
+        $this->C_FORMING = new C_Forming();
     }
 
     function index() {

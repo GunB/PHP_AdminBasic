@@ -26,7 +26,9 @@ class C_Forming {
     }
 
     function crearInput($nombre_tabla, $data, $is_detalle_json = false) {
-        $fields = $this->db->list_fields($nombre_tabla);
+        $db = new application\config\DATABASE();
+        $fields = $db->list_fields($nombre_tabla);
+        
         $input = array();
         foreach ($fields as $value) {
             if (isset($data->$value)) {
@@ -50,6 +52,7 @@ class C_Forming {
         }
 
         $input = (object) $input;
+        unset($db);
         return $input;
     }
 

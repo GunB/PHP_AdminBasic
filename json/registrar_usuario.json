@@ -8,19 +8,25 @@
     "nombre": {
         "type": "text",
         "label": "Nombre",
-        "placeholder": null,
+        "placeholder": "Inserte nombre",
         "value": null
     },
     "apellido": {
         "type": "text",
         "label": "Apellido",
+        "placeholder": "Inserte apellido",
+        "value": null
+    },
+    "direccion": {
+        "type": "text",
+        "label": "Dirección",
         "placeholder": null,
         "value": null
     },
     "correo": {
         "type": "text",
         "label": "Correo Electrónico",
-        "placeholder": null,
+        "placeholder": "example@example.com",
         "value": null
     },
     "clave": {
