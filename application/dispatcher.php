@@ -118,23 +118,6 @@ if ((!$_SERVER["CROSSDOMAINCHECK"]) && ENVIRONMENT != 'development') {
     error($caller);
 }
 
-// Invalid characters
-/*
-  function invalid_fixing($data) {
-  foreach ($data as $key => $value) {
-  if (is_array($value) || is_object($value)) {
-  $data[$key] = invalid_fixing($value);
-  } else {
-  $data[$key] = htmlspecialchars($value);
-  }
-  }
-  array_filter($data);
-  return $data;
-  }
-  $_GET = invalid_fixing(filter_input_array(INPUT_SERVER));
-  $_POST = invalid_fixing($_POST);
-  // */
-
 /*
  * ---------------------------------------------------------------
  * SYSTEM FUNCTION
