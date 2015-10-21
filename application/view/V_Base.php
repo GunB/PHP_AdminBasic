@@ -9,6 +9,7 @@ function showHeaders() {
     ?>
     <html>
         <head>
+            <meta charset="utf-8" /> 
             <?php
             $m_data = new application\model\M_Data();
             //$array = $m_data->listFolderFiles("assets");

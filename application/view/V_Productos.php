@@ -12,19 +12,19 @@ function showProductos1($productos = array()) {
             <div class="col-md-12">
                 <div class="col-sm-6 col-md-4">
                     <div class="thumbnail" >
-                        <h4 class="text-center"><span class="label label-info">Samsung</span></h4>
-                        <img src="http://placehold.it/650x450&text=Galaxy S5" class="img-responsive">
+                        <h4 class="text-center"><span class="label label-info">Acetaminofen</span></h4>
+                        <img src="http://placehold.it/650x450&text=Acetaminofen" class="img-responsive">
                         <div class="caption">
                             <div class="row">
                                 <div class="col-md-6 col-xs-6">
-                                    <h3>Galaxy S5</h3>
+                                    <h3>Acetaminofen 200</h3>
                                 </div>
                                 <div class="col-md-6 col-xs-6 price">
                                     <h3>
                                         <label>$649.99</label></h3>
                                 </div>
                             </div>
-                            <p>32GB, 2GB Ram, 1080HD, 5.1 inches, Android</p>
+                            <p>El paracetamol o acetaminofén es un fármaco con propiedades analgésicas, sin propiedades antiinflamatorias clínicamente significativas. Actúa inhibiendo la síntesis de prostaglandinas, mediadores celulares responsables de la aparición del dolor. Además, tiene efectos antipiréticos. </p>
                             <div class="row">
                                 <div class="col-md-6">
                                     <a class="btn btn-primary btn-product"><span class="glyphicon glyphicon-thumbs-up"></span> Like</a> 
@@ -39,19 +39,19 @@ function showProductos1($productos = array()) {
                 </div>
                 <div class="col-sm-6 col-md-4">
                     <div class="thumbnail" >
-                        <h4 class="text-center"><span class="label label-info">Apple</span></h4>
-                        <img src="http://placehold.it/650x450&text=iPhone 6" class="img-responsive">
+                        <h4 class="text-center"><span class="label label-info">Acetaminofen</span></h4>
+                        <img src="http://placehold.it/650x450&text=Acetaminofen" class="img-responsive">
                         <div class="caption">
                             <div class="row">
                                 <div class="col-md-6 col-xs-6">
-                                    <h3>iPhone 6</h3>
+                                    <h3>Acetaminofen 200</h3>
                                 </div>
                                 <div class="col-md-6 col-xs-6 price">
                                     <h3>
-                                        <label>$749.99</label></h3>
+                                        <label>$649.99</label></h3>
                                 </div>
                             </div>
-                            <p>32GB, 64Bit, 1080HD, 4.7 inches, iOS 8</p>
+                            <p>El paracetamol o acetaminofén es un fármaco con propiedades analgésicas, sin propiedades antiinflamatorias clínicamente significativas. Actúa inhibiendo la síntesis de prostaglandinas, mediadores celulares responsables de la aparición del dolor. Además, tiene efectos antipiréticos. </p>
                             <div class="row">
                                 <div class="col-md-6">
                                     <a class="btn btn-primary btn-product"><span class="glyphicon glyphicon-thumbs-up"></span> Like</a> 
@@ -66,19 +66,19 @@ function showProductos1($productos = array()) {
                 </div>
                 <div class="col-sm-6 col-md-4">
                     <div class="thumbnail" >
-                        <h4 class="text-center"><span class="label label-info">Nokia</span></h4>
-                        <img src="http://placehold.it/650x450&text=Lumia 1520" class="img-responsive">
+                        <h4 class="text-center"><span class="label label-info">Acetaminofen</span></h4>
+                        <img src="http://placehold.it/650x450&text=Acetaminofen" class="img-responsive">
                         <div class="caption">
                             <div class="row">
                                 <div class="col-md-6 col-xs-6">
-                                    <h3>Lumia 1520</h3>
+                                    <h3>Acetaminofen 200</h3>
                                 </div>
                                 <div class="col-md-6 col-xs-6 price">
                                     <h3>
-                                        <label>$749.00</label></h3>
+                                        <label>$649.99</label></h3>
                                 </div>
                             </div>
-                            <p>32GB, 4GB Ram, 1080HD, 6.3 inches, WP 8</p>
+                            <p>El paracetamol o acetaminofén es un fármaco con propiedades analgésicas, sin propiedades antiinflamatorias clínicamente significativas. Actúa inhibiendo la síntesis de prostaglandinas, mediadores celulares responsables de la aparición del dolor. Además, tiene efectos antipiréticos. </p>
                             <div class="row">
                                 <div class="col-md-6">
                                     <a class="btn btn-primary btn-product"><span class="glyphicon glyphicon-thumbs-up"></span> Like</a> 
