@@ -13,7 +13,7 @@ function showMenu() {
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Login dropdown</a>
+                <a class="navbar-brand" href="<?php echo site_url() ?>">Login dropdown</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -63,16 +63,16 @@ function showMenu() {
                                             <div class="form-group">
                                                 <label class="sr-only" for="exampleInputPassword2">Password</label>
                                                 <input type="password" name="clave" class="form-control" id="exampleInputPassword2" placeholder="Password" required>
-                                                <div class="help-block text-right"><a href="">Forget the password ?</a></div>
+                                                <!--<div class="help-block text-right"><a href="">Forget the password ?</a></div>-->
                                             </div>
                                             <div class="form-group">
                                                 <button type="submit" class="btn btn-primary btn-block">Sign in</button>
                                             </div>
-                                            <div class="checkbox">
+                                            <!--<div class="checkbox">
                                                 <label>
                                                     <input type="checkbox"> keep me logged-in
                                                 </label>
-                                            </div>
+                                            </div>-->
                                         </form>
                                     </div>
                                     <div class="bottom text-center">
