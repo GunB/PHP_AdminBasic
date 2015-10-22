@@ -34,14 +34,14 @@ function showMenu() {
                         </ul>
                     </li>
                 </ul>
-                <form class="navbar-form navbar-left" role="search">
+                <!--<form class="navbar-form navbar-left" role="search">
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Search">
                     </div>
                     <button type="submit" class="btn btn-default">Submit</button>
-                </form>
+                </form>-->
                 <ul class="nav navbar-nav navbar-right">
-                    <li><p class="navbar-text">Already have an account?</p></li>
+                    <!--<li><p class="navbar-text">Already have an account?</p></li>-->
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
                         <ul id="login-dp" class="dropdown-menu">
