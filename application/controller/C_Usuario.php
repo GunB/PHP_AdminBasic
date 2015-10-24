@@ -44,5 +44,11 @@ class C_Usuario {
 
         $post = $m_data->getAllPost();
         $data = $c_forming->crearInput("usuario", $post);
+        
+        $usuario = $m_usuario->logUsuario($data);
+        
+        if(sizeof($usuario) > 0){
+            
+        }
     }
 }

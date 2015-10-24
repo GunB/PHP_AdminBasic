@@ -28,7 +28,7 @@ class C_Forming {
     function crearInput($nombre_tabla, $data, $is_detalle_json = false) {
         $db = new application\config\DATABASE();
         $fields = $db->list_fields($nombre_tabla);
-        
+
         $input = array();
         foreach ($fields as $value) {
             if (isset($data->$value)) {
@@ -43,7 +43,7 @@ class C_Forming {
             }
         }
 
-        if (!empty($data)) {
+        if (!empty((array) $data) && !empty($array)) {
             if ($is_detalle_json) {
                 $input['detalles'] = json_encode($data);
             } else {

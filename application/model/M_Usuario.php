@@ -16,9 +16,16 @@ class M_Usuario {
         
     }
     
-    function setUsuario($var){
+    function setUsuario($objData){
         $db = new \application\config\DATABASE();
-        $insert = $db->insert("usuario", $var);
+        $insert = $db->insert("usuario", $objData);
+        
+        return $insert;
+    }
+    
+    function logUsuario($objData){
+        $db = new \application\config\DATABASE();
+        $insert = $db->select_and("usuario", $objData);
         
         return $insert;
     }

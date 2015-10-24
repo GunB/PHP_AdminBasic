@@ -61,6 +61,57 @@ class DATABASE {
         
         return $resultado;
     }
+    
+    function select_and($table, $obj_data, $arr_selec = ["id"]) {
+        $sql_query = "Select";
+
+        $resp = [];
+        $keys = [];
+        $values = [];
+        $both = [];
+
+        foreach ($obj_data as $key => $value) {
+            array_push($keys, $key);
+            if (is_object($value) || is_array($value)) {
+                array_push($values, "'" .
+                        mysqli_real_escape_string($this->CON, json_encode($value))
+                        . "'");
+                array_push($both, "$key = '" .
+                        mysqli_real_escape_string($this->CON, json_encode($value))
+                        . "'");
+            } else {
+                array_push($values, "'" . ($value) . "'");
+                array_push($both, "$key = '" . ($value) . "'");
+            }
+        }
+
+        $sql_query .= " ";
+        $sql_query .= implode(", ", $arr_selec);
+        $sql_query .= " ";
+        $sql_query .= "from $table";
+        $sql_query .= " ";
+        $sql_query .= "where";
+        $sql_query .= " ";
+        $sql_query .= implode(" and ", $both);
+        
+        $resultado = mysqli_query($this->CON, $sql_query);
+        
+        if ($resultado) {
+            while ($obj = $resultado->fetch_object()) {
+                $resp_obj = (object)[];
+                foreach ($arr_selec as $key => $value) {
+                    $resp_obj->$value = $obj->$value;
+                }
+                array_push($resp, $resp_obj);
+                //
+            }
+        } else {
+            echo 'No se pudo ejecutar la consulta: ' . mysqli_error($this->CON);
+            exit;
+        }
+        
+        return $resp;
+    }
 
     function __destruct() {
         mysqli_close($this->CON);
