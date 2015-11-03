@@ -25,16 +25,13 @@ class C_Usuario {
 
         $insert = $m_usuario->setUsuario($data);
 
-        showHeaders();
-        showMenu();
+        $mv_mensaje = new Mensaje();
 
         if (!$insert) {
-            error_mensaje("No se ha podido agregar el usuario, el correo ingresado ya existe");
+            $mv_mensaje->mensaje_error("No se ha podido agregar el usuario, el correo ingresado ya existe");
         }else{
-            correct_mensaje("Usuario agregado correctamente");
+            $mv_mensaje->mensaje_correcto("Usuario agregado correctamente");
         }
-        
-        showFoot();
     }
     
     function iniciar_sesion(){
@@ -46,9 +43,21 @@ class C_Usuario {
         $data = $c_forming->crearInput("usuario", $post);
         
         $usuario = $m_usuario->logUsuario($data);
+        //var_dump($usuario);
+        
+        $mv_mensaje = new Mensaje();
         
         if(sizeof($usuario) > 0){
+            $usuario = $usuario[0];
+            $m_sesion = new application\model\M_Sesion();
+            $usuario = $m_usuario->getUsuario($usuario);
             
+            $m_sesion->create_session($usuario);
+            var_dump($usuario);
+            
+            $mv_mensaje->mensaje_correcto("Bienvenido");
+        }else{
+            $mv_mensaje->mensaje_error("Los datos ingresados son probablemente incorrectos... Intentelo denuevo");
         }
     }
 }

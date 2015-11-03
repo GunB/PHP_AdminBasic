@@ -11,22 +11,25 @@ namespace application\model;
 class M_Usuario {
 
     //var $sesion = null;
+    var $DB;
 
     function __construct() {
-        
+        $this->DB = new \application\config\DATABASE();
     }
     
     function setUsuario($objData){
-        $db = new \application\config\DATABASE();
-        $insert = $db->insert("usuario", $objData);
+        $insert = $this->DB->insert("usuario", $objData);
         
         return $insert;
     }
     
     function logUsuario($objData){
-        $db = new \application\config\DATABASE();
-        $insert = $db->select_and("usuario", $objData);
+        $insert = $this->DB->select_and("usuario", $objData);
         
         return $insert;
+    }
+    
+    function getUsuario($obj_usuario){
+        $this->DB->select_and("usuario", $obj_usuario, ["*"]);
     }
 }

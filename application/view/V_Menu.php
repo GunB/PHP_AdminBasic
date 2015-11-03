@@ -14,7 +14,8 @@ function showMenu() {
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="<?php echo site_url() ?>">Drogueria COLO</a>
-            </div></div>
+            </div>
+        </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -89,11 +90,7 @@ function showMenu() {
                 </li>
             </ul>
         </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
+        <!-- /.container-fluid -->
     </nav>
-
-
-
-
     <?php
 }

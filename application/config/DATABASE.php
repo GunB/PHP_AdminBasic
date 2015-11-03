@@ -63,6 +63,7 @@ class DATABASE {
     }
     
     function select_and($table, $obj_data, $arr_selec = ["id"]) {
+        
         $sql_query = "Select";
 
         $resp = [];
@@ -96,11 +97,20 @@ class DATABASE {
         
         $resultado = mysqli_query($this->CON, $sql_query);
         
+        var_dump($sql_query);
+        
         if ($resultado) {
             while ($obj = $resultado->fetch_object()) {
                 $resp_obj = (object)[];
                 foreach ($arr_selec as $key => $value) {
-                    $resp_obj->$value = $obj->$value;
+                    if($value == "*"){
+                        $list = $this->list_fields($table);
+                        foreach ($list as $val) {
+                            $resp_obj->$val = $obj->$val;
+                        }
+                    }else{
+                        $resp_obj->$value = $obj->$value;
+                    }
                 }
                 array_push($resp, $resp_obj);
                 //

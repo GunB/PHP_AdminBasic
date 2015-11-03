@@ -15,14 +15,16 @@ class M_Sesion {
     var $SESSION = "SESSION";
 
     function __construct() {
-        
+        session_start();
+        /* session is started if you don't write this line can't use $_Session  global variable */
     }
 
     function create_session($obj_session) {
-        session_start();
-        /* session is started if you don't write this line can't use $_Session  global variable */
         $_SESSION[$this->SESSION] = $obj_session;
-        
+    }
+    
+    function get_session(){
+        return $_SESSION[$this->SESSION];
     }
 
 }
