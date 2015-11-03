@@ -97,7 +97,7 @@ class DATABASE {
         
         $resultado = mysqli_query($this->CON, $sql_query);
         
-        var_dump($sql_query);
+        //var_dump($sql_query, $resultado);
         
         if ($resultado) {
             while ($obj = $resultado->fetch_object()) {
@@ -105,7 +105,9 @@ class DATABASE {
                 foreach ($arr_selec as $key => $value) {
                     if($value == "*"){
                         $list = $this->list_fields($table);
+                        //var_dump($obj, $list);
                         foreach ($list as $val) {
+                            //var_dump($val, $obj->$val);
                             $resp_obj->$val = $obj->$val;
                         }
                     }else{
@@ -113,13 +115,12 @@ class DATABASE {
                     }
                 }
                 array_push($resp, $resp_obj);
-                //
             }
         } else {
             echo 'No se pudo ejecutar la consulta: ' . mysqli_error($this->CON);
             exit;
         }
-        
+        //var_dump($resp);
         return $resp;
     }
 

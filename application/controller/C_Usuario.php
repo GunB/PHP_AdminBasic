@@ -50,10 +50,12 @@ class C_Usuario {
         if(sizeof($usuario) > 0){
             $usuario = $usuario[0];
             $m_sesion = new application\model\M_Sesion();
-            $usuario = $m_usuario->getUsuario($usuario);
+            $usuario = $m_usuario->getUsuario($usuario)[0];
+            unset($usuario->clave);
             
             $m_sesion->create_session($usuario);
-            var_dump($usuario);
+            
+            //var_dump($m_sesion->get_session());
             
             $mv_mensaje->mensaje_correcto("Bienvenido");
         }else{

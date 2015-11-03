@@ -30,6 +30,6 @@ class M_Usuario {
     }
     
     function getUsuario($obj_usuario){
-        $this->DB->select_and("usuario", $obj_usuario, ["*"]);
+        return $this->DB->select_and("usuario", $obj_usuario, ["*"]);
     }
 }
