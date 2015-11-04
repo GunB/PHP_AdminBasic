@@ -1,6 +1,7 @@
 <?php
 
 function showMenu() {
+    $m_session = new \application\model\M_Sesion();
     ?>
 
     <nav class="navbar navbar-default navbar-inverse" role="navigation">

@@ -62,4 +62,8 @@ class C_Usuario {
             $mv_mensaje->mensaje_error("Los datos ingresados son probablemente incorrectos... Intentelo denuevo");
         }
     }
+    
+    function mostrar_usuarios(){
+        
+    }
 }
